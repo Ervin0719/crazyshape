@@ -13,21 +13,20 @@ import kotlinx.android.synthetic.main.activity_main.*
 @GlideModule
 public final class MyAppGlideModule : AppGlideModule()
 
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        generate()
+        val shape = intArrayOf(R.drawable.circle,R.drawable.square,R.drawable.triangle,R.drawable.star)
+        val i:Int = (0..3).random()
+        imgNext.setImageResource(shape[i])
 
         val img: ImageView = findViewById(R.id.imgTitle)
         GlideApp.with(this)
             .load(R.drawable.cover)
             .override(800, 600)
             .into(img)
-
-        var X: Int = (1..N).random()
 
         Toast.makeText(this, "作者 = 趙泓斌", Toast.LENGTH_LONG).show()
         imgNext.setOnLongClickListener(object : View.OnLongClickListener {
@@ -38,13 +37,13 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
         })
+        imgNext.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(p0: View?) {
+                intent = Intent(this@MainActivity, GameActivity::class.java)
+                recreate()
+            }
+        })
+
     }
 
-
-    private fun generate() {
-        val shape =
-            intArrayOf(R.drawable.circle, R.drawable.square, R.drawable.triangle, R.drawable.star)
-        val i: Int = (0..3).random()
-        imgNext.setImageResource(shape[i])
-    }
 }
