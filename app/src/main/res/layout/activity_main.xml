@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/square" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/imgNext"
