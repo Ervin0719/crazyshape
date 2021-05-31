@@ -18,29 +18,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val shape = intArrayOf(R.drawable.circle,R.drawable.square,R.drawable.triangle,R.drawable.star)
-        val i:Int = (0..3).random()
-        imgNext.setImageResource(shape[i])
-
-        val img: ImageView = findViewById(R.id.imgTitle)
+        Toast.makeText(baseContext, "作者 = 趙泓斌1", Toast.LENGTH_LONG).show()
         GlideApp.with(this)
             .load(R.drawable.cover)
             .override(800, 600)
-            .into(img)
+            .into(imgTitle)
 
-        Toast.makeText(this, "作者 = 趙泓斌1", Toast.LENGTH_LONG).show()
+
         imgNext.setOnLongClickListener(object : View.OnLongClickListener {
-            override fun onLongClick(p0: View): Boolean {
+            override fun onLongClick(p0: View?):Boolean {
                 intent = Intent(this@MainActivity, GameActivity::class.java)
                 startActivity(intent)
-                recreate()
                 return true
-            }
-        })
-        imgNext.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(p0: View?) {
-                intent = Intent(this@MainActivity, GameActivity::class.java)
-                recreate()
             }
         })
 
