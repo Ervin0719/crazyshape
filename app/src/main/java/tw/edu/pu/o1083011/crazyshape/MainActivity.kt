@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                     putExtra("形狀",Flag)
             }
 
-                startActivity(intent)
+                startActivityForResult(intent,99)
                 return true
             }
         })
@@ -57,4 +57,14 @@ class MainActivity : AppCompatActivity() {
             4 -> imgNext.setImageResource(R.drawable.triangle)
         }
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode==99){
+            intent = Intent(this@MainActivity,MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
 }
